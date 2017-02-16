@@ -1,18 +1,16 @@
-"""
-
-usage:
-
-    navigation.py <solver.lp> <instance.lp>
-
+"""Implementation of the lattice navigation, as described
+in Rudolph and ali. article *Membership constraints in Formal Concept Analysis*.
 
 """
 
 from collections import namedtuple
+
 from termcolor import cprint
+from pyasp import asp
 
 
 ASP_FILES = {'sofa.lp'}
-# ASP_FILES = {'simple.lp'}
+# ASP_FILES = {'simple.lp'}  # simpler version
 
 
 # Define a constraint on a dimension for concept search.
@@ -23,7 +21,6 @@ Context = namedtuple('Context', 'sets, relations')
 
 def have_concept(context, constraints) -> bool:
     """True if given context and constraints yields concepts."""
-    from pyasp import asp
     solver = asp.Gringo4Clasp(clasp_options='-n 1')
 
     atoms = set()
