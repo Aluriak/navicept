@@ -1,8 +1,5 @@
-"""
-
-usage:
-
-    navigation.py <solver.lp> <instance.lp>
+"""Implementation of the lattice navigation, using coroutine to allow one
+to plug easily user interaction to lattice exploration.
 
 
 """
