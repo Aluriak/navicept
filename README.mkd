@@ -1,0 +1,29 @@
+# Navicept
+Programs allowing one to explore a concept lattice and its data.
+
+Based on *Rudolph et al.*'s [*Membership Constraints in Formal Concept Analysis*](http://dl.acm.org/citation.cfm?id=2832693).
+
+
+
+
+## Files
+### sofa.lp
+Implementation of the logic program described by *Rudolph et al.* in [*Membership Constraints in Formal Concept Analysis*](http://dl.acm.org/citation.cfm?id=2832693).
+
+
+### simple.lp
+Alternative implementation, much more simple.
+
+
+### navigation_classic.py
+Implementation of algorithms described in *Rudolph et al.*, using [pyasp](https://github.com/sthiele/pyasp) to call ASP for verification of concept existance.
+
+
+### navigation.py
+like `navigation_classic.py`, but with concept search function is implemented as a coroutine
+allowing client code to easily plug any interface on the search.
+
+
+### gui.py
+Use `navigation.py`'s coroutine to implement the search and concept, using a tkinter gui to
+inform and request user about the constraints.

@@ -1,0 +1,2 @@
+pyasp==1.4.2
+termcolor==1.1.0
