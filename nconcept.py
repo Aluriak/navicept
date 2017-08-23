@@ -6,7 +6,6 @@
 from pyasp import asp
 
 
-ASP_FILES = {'sofa.lp'}
 ASP_FILES = {'simple.lp'}
 
 
