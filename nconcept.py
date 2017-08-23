@@ -18,26 +18,24 @@ def have_concept(context, constraints) -> bool:
     solver = asp.Gringo4Clasp(clasp_options='-n 1')
 
     atoms = set()
-    for idx, constraint in enumerate(constraints, start=1):
-        for elem in constraint.required:
-            atoms.add('required({},"{}")'.format(idx, elem))
-        for elem in constraint.forbidden:
-            atoms.add('forbidden({},"{}")'.format(idx, elem))
-    for idx, dim in enumerate(context.sets, start=1):
+    for idx, dim in enumerate(context.sets):
+        required, forbidden = constraints[idx]
+        for elem in required:
+            atoms.add('required({},"{}")'.format(idx+1, elem))
+        for elem in forbidden:
+            atoms.add('forbidden({},"{}")'.format(idx+1, elem))
         for elem in dim:
-            atoms.add('set({},"{}")'.format(idx, elem))
+            atoms.add('set({},"{}")'.format(idx+1, elem))
+
     for relations in context.relations:
         atoms.add('rel("{}")'.format('","'.join(relations)))
 
-    constraints = ''.join(dimension_dependant_constraints(len(context.sets)))
-    atoms = '.'.join(sorted(atoms)) + ('.' if atoms else '')
+    asp_constraints = ''.join(dimension_dependant_constraints(len(context.sets)))
+    asp_atoms = '.'.join(sorted(atoms)) + ('.' if atoms else '')
 
-    print('MVMKPX:', atoms, constraints, end='')
-    answers = solver.run(programs=list(ASP_FILES), additionalProgramText=atoms + constraints)
+    answers = solver.run(programs=list(ASP_FILES), additionalProgramText=asp_atoms + asp_constraints)
     for answer in answers:
-        print('\tOK')
         return True
-    print('\tNOPE')
     return False
 
 
