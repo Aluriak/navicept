@@ -39,6 +39,7 @@ def propagate(context, constraints):
                 if not nconcept.have_concept(context, tested_constraints):
                     constraints[idx] = Constraint(constraints[idx].required, constraints[idx].forbidden | {elem})
                     change = True
+                    continue
 
                 # If, once deleted, elem avoid any concept creation,
                 #  it should be added to required.
