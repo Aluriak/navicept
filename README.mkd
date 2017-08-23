@@ -1,7 +1,8 @@
 # Navicept
 Programs allowing one to explore a concept lattice and its data.
 
-Based on *Rudolph et al.*'s [*Membership Constraints in Formal Concept Analysis*](http://dl.acm.org/citation.cfm?id=2832693).
+Based on *Rudolph et al.*'s [*Membership Constraints in Formal
+Concept Analysis*](http://dl.acm.org/citation.cfm?id=2832693).
 
 
 
